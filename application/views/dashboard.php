@@ -18,7 +18,7 @@
 
 .sidenav1 { /*kuning*/
     width: 20%;
-    height: 250px;
+    height: 270px;
     position: fixed;
     z-index: 1;
     top: 90px;
@@ -81,7 +81,7 @@
 <nav class="navbar" style="background-color: #1f7a1f"> <!-- warna navbar -->
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#" style="color:#ffffff">Kampoong English</a>
+      <a class="navbar-brand" href="#" style="color:#ffffff">Kampoong English Course</a>
     </div>
    <!--  <ul class="nav navbar-nav" >
       <li class="active"><a href="#" style="color:#ffffff">Home</a></li>
@@ -110,12 +110,12 @@
 			</div>
 
 			<div class="sidenav">
-			  <a href="#about">Admin</a>
-			  <a href="#services">Guru</a>
-			  <a href="#clients">Siswa</a>
-			  <a href="#clients">Kategori Program</a>
-			  <a href="#clients">Materi</a>
-			  <button type="button" class="btn btn-default active">Active default button</button>    
+			 
+			  <a href=""><button type="button" class="btn btn-default active" style="background: #29a329; color: #ffffff; width: 200px" >Admin</button>  </a>  
+			  <a href=""><button type="button" class="btn btn-default active" style="background: #29a329; color: #ffffff; width: 200px" >Guru</button>  </a>  
+			  <a href=""><button type="button" class="btn btn-default active" style="background: #29a329; color: #ffffff; width: 200px" >Siswa</button>  </a>  
+			  <a href=""><button type="button" class="btn btn-default active" style="background: #29a329; color: #ffffff; width: 200px" >Kategori Program</button>  </a>  
+			  <a href=""><button type="button" class="btn btn-default active" style="background: #29a329; color: #ffffff; width: 200px" >Materi</button>  </a>  
 			</div>
 	  </div>
 	  <div class="col-sm-9"> 	
