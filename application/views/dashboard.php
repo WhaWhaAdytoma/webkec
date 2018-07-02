@@ -1,68 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Halaman Utama</title>
-</head>
-<body>
-<h1>Halaman Utama</h1>
-<h1>Selamat Datang di 
-	<?php echo $nama ?>, Alamat
-<?php echo $alamat ?></h1>
-<h2><?php echo $identitas ?></h2>
-<a href="<?php echo base_url() ?>index.php/login/logout">Logout</a><br><br>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
+  <style>
+/*body {
+    font-family: "Lato", sans-serif;
+
+}*/
 
 
-
-<?php
-echo form_open('dashboard/input');
-$att_kode = array('name' => 'kode', 'placeholder'=>'Masukan Kode',
-                 'type' => 'text', 'style'=>'width:250px');
-echo form_input($att_kode);echo "<br>";
-
-$att_nama_mk = array('name' => 'nama_mk', 'placeholder'=>'Masukan Nama Mata Kuliah',
-                 'type' => 'text', 'style'=>'width:250px');
-echo form_input($att_nama_mk);echo "<br>";
-
-$att_semester = array('name' => 'semester', 'placeholder'=>'Masukan Semester',
-                 'type' => 'text', 'style'=>'width:250px');
-echo form_input($att_semester);echo "<br>";
-
-$att_sks = array('name' => 'sks', 'placeholder'=>'Masukan Jumlah SKS',
-                 'type' => 'text', 'style'=>'width:250px');
-echo form_input($att_sks);echo "<br>";
-
-$att_nilai_minimal_lulus = array('name' => 'nilai_minimal_lulus', 'placeholder'=>'Masukan Nilai Minimal Lulus',
-                 'type' => 'text', 'style'=>'width:250px');
-echo form_input($att_nilai_minimal_lulus);echo "<br>";
-
-$att_submit = array('type' => 'submit', 'value'=>'simpan');
-echo form_input($att_submit);
-?>
-
-<!--  kode	nama_mk	semester	sks	nilai_minimal_lulus-->
-<table border="1">
-	<tr>
-		<th>No</th><th>Kode</th><th>Nama Mata Kuliah</th><th>Semester</th><th>SKS</th><th>Nilai Minimal Lulus</th><th>Action</th>
-	</tr>
-<?php 
-$no=1;
-foreach ($matakuliah->result() as $data) {
-	echo "<tr><td>$no</td>
-	          <td>$data->kode</td>
-	          <td>$data->nama_mk</td>
-	          <td>$data->semester</td>
-	          <td>$data->sks</td>
-	          <td>$data->nilai_minimal_lulus</td>
-	          <td>
-	            <a href='".base_url()."index.php/dashboard/edit/$data->kode'>Edit</a>|
-	            <a href='".base_url()."index.php/dashboard/hapus/$data->kode'>Hapus</a>
-	          </td>
-	       </tr>";
-	$no++;
+.sidenav1 { /*kuning*/
+    width: 20%;
+    height: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 90px;
+    left: 30px;
+    background: #e6b800;/*warna sidebar*/
+    overflow-x: hidden;
+    padding: 8px 0;
 }
- ?>
- </table>
+
+.sidenav1 a { /*kuning*/
+    padding: 6px 8px 6px 30px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff;
+    display: block;
+}
+
+.sidenav1 a:hover {/*kuning*/
+    color: #ffffff;
+}
+
+.sidenav { /*hijau*/
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    top: 150px;
+    left: 50px;
+    background: #29a329;/*warna sidebar*/
+    overflow-x: hidden;
+    padding: 8px 0;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 30px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff;
+    display: block;
+}
+
+
+.sidenav a:hover {
+    color: #ffffff;
+}
+
+
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+    .sidenav1 {padding-top: 15px;}
+    .sidenav1 a {font-size: 18px;}
+}
+</style>
+</head>
+
+<!-- ================= -->
+<body>
+
+<nav class="navbar" style="background-color: #1f7a1f"> <!-- warna navbar -->
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#" style="color:#ffffff">Kampoong English</a>
+    </div>
+   <!--  <ul class="nav navbar-nav" >
+      <li class="active"><a href="#" style="color:#ffffff">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+        <ul class="dropdown-menu" >
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Page 2</a></li>
+    </ul> -->
+    <ul class="nav navbar-nav navbar-right" style="color:#ffffff">
+      <li><a href="#" style="color:#ffffff"><span class="glyphicon glyphicon-user" ></span> Akun Saya</a></li>
+      <li><a href="#" style="color:#ffffff"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- body -->
+<div class="row">
+	  <div class="col-sm-3">
+	    <!-- sidebar -->
+			<div class="sidenav1">
+				<h3 style="font-weight: bold; text-align: center; color: #ffffff">Menu Utama </h3>
+			</div>
+
+			<div class="sidenav">
+			  <a href="#about">Admin</a>
+			  <a href="#services">Guru</a>
+			  <a href="#clients">Siswa</a>
+			  <a href="#clients">Kategori Program</a>
+			  <a href="#clients">Materi</a>
+			  <button type="button" class="btn btn-default active">Active default button</button>    
+			</div>
+	  </div>
+	  <div class="col-sm-9"> 	
+			<!-- container -->
+
+			<div class="container">
+				<div class="jumbotron" style="width: 80%">
+				  <h3 style="font-weight: bold; ">Daftar Admin</h3>
+				   <button type="button" class="btn btn-primary">+Tambah Admin</button>
+				</div>
+			</div>
+	  </div>
+ </div>
+
+
 </body>
 </html>
