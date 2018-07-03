@@ -111,7 +111,7 @@
 
 			<div class="sidenav">
 			 
-			  <a href=""><button type="button" class="btn btn-default active" style="background: #29a329; color: #ffffff; width: 200px" >Admin</button>  </a>  
+			  <a href=""><button type="button" class="btn btn-default active" style="background: #e6b800; color: #ffffff; width: 200px" >Admin</button>  </a>  
 			  <a href=""><button type="button" class="btn btn-default active" style="background: #29a329; color: #ffffff; width: 200px" >Guru</button>  </a>  
 			  <a href=""><button type="button" class="btn btn-default active" style="background: #29a329; color: #ffffff; width: 200px" >Siswa</button>  </a>  
 			  <a href=""><button type="button" class="btn btn-default active" style="background: #29a329; color: #ffffff; width: 200px" >Kategori Program</button>  </a>  
@@ -125,6 +125,43 @@
 				<div class="jumbotron" style="width: 80%">
 				  <h3 style="font-weight: bold; ">Daftar Admin</h3>
 				   <button type="button" class="btn btn-primary">+Tambah Admin</button>
+				   <p></p>
+				   <div class="table table-condensed">          
+					  <table class="table">
+					    <thead>
+					      <tr>
+					        <th>No</th>
+					        <th>User ID</th>
+					        <th>Nama</th>
+					        <th>Gender</th>
+					        <th>Tanggal Lahir</th>
+					        <th>Kontak</th>
+					        <th>Alamat</th>
+					        <th>Password</th>
+					        <th>Foto</th>
+					        <th>Aksi</th> 
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <td>1</td>				        
+								id_admin
+								email
+								nama
+								jk
+								bday
+								kontak
+								alamat
+								pass
+								foto
+					        <td>
+					        	<a href='".base_url()."index.php/dashboard/edit/$data->kode'>Edit</a>|
+	           					 <a href='".base_url()."index.php/dashboard/hapus/$data->kode'>Hapus</a>
+					        </td>
+					      </tr>
+					    </tbody>
+					  </table>
+				  </div>
 				</div>
 			</div>
 	  </div>
@@ -133,3 +170,4 @@
 
 </body>
 </html>
+
