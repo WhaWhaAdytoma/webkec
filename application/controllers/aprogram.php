@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller {
    
    public function __construct(){
        parent::__construct();
-       $this->load->model('m_dashboard','dash');
+       $this->load->model('m_aprogram','dash');
        $login = $this->session->userdata('login');
        if ($login=='') {
           redirect(base_url()."index.php/login");
@@ -15,11 +15,9 @@ class Dashboard extends CI_Controller {
    public function index()
    {
      
-   	 $data['nama'] = "UIN Bandung";
-   	 $data['alamat'] ="Jl. AH. Nasution no 25";
-     $data['identitas'] ="Wha Wha Adytoma || 1157050174";
-     $data['matakuliah'] = $this->dash->tampil_data();
-   	 $this->load->view('dashboard',$data);
+   	 
+     $data['program_kec'] = $this->dash->tampil_data();
+   	 $this->load->view('aprogram',$data);
    }
 
    public function input()
@@ -27,67 +25,48 @@ class Dashboard extends CI_Controller {
 
 // <!--  kode  nama_mk semester  sks nilai_minimal_lulus-->
 
-    /*$kode  = $this->input->post('kode'); */
-               /* id_admin */          
-    $email = $this->input->post(' email');
-    $nama = $this->input->post('nama');
-    $jk  = $this->input->post('jk'); 
-    $bday = $this->input->post('bday');
-    $kontak = $this->input->post('kontak');
-    $alamat  = $this->input->post('alamat'); 
-    $pass = $this->input->post('pass');
-    $foto = $this->input->post('foto');
-
-    $data = array('email' => $email,
-                    'nama' => $nama,
-                    'jk' => $jk,
-                    'bday' => $bday,
-                    'kontak' => $kontak,
-                    'alamat' => $alamat,
-                    'pass' => $pass,
-                    'foto' => $foto
+    $id_program  = $this->input->post('id_program');            
+    $nama_program = $this->input->post(' nama_program');
+    $sub_program  = $this->input->post('sub_program'); 
+    $level = $this->input->post('level');
+  
+    $data = array('id_program' => $id_program,
+                    'nama_program' => $nama_program,
+                    'sub_program' => $sub_program,
+                    'level' => $level                   
                      );
     $this->dash->input($data);
     redirect(base_url());
    }
 
-   public function edit($id_admin=NULL)
+   public function edit($id_program=NULL)
    {
-     $this->db->where('id_admin',$id_admin);
-     $data['admin'] = $this->db->get('admin')->result();
-     $this->load->view('edit_admin',$data);
+     $this->db->where('id_program',$id_program);
+     $data['program_kec'] = $this->db->get('program_kec')->result();
+     $this->load->view('edit_aprogram',$data);
    }
 
    public function aksi_edit()
    {
-    $id_admin    = $this->input->post('id_admin'); 
-    $email = $this->input->post(' email');
-    $nama = $this->input->post('nama');
-    $jk  = $this->input->post('jk'); 
-    $bday = $this->input->post('bday');
-    $kontak = $this->input->post('kontak');
-    $alamat  = $this->input->post('alamat'); 
-    $pass = $this->input->post('pass');
-    $foto = $this->input->post('foto');
+     $id_program  = $this->input->post('id_program');            
+    $nama_program = $this->input->post(' nama_program');
+    $sub_program  = $this->input->post('sub_program'); 
+    $level = $this->input->post('level');
+  
+    $data = array('id_program' => $id_program,
+                    'nama_program' => $nama_program,
+                    'sub_program' => $sub_program,
+                    'level' => $level                   
+                     );
 
-    $data = array(  'id_admin' => $id_admin,
-                    'email' => $email,
-                    'nama' => $nama,
-                    'jk' => $jk,
-                    'bday' => $bday,
-                    'kontak' => $kontak,
-                    'alamat' => $alamat,
-                    'pass' => $pass,
-                    'foto' => $foto
-                     );   
-    $this->dash->update_data($data,$id_admin);
+    $this->dash->update_data($data,$id_program);
     redirect(base_url());
    }
 
-   public function hapus($id_admin)
+   public function hapus($id_program)
    {
-     $this->db->where('id_admin',$id_admin);
-     $this->db->delete('admin');
+     $this->db->where('id_program',$id_program);
+     $this->db->delete('program_kec');
      redirect(base_url());
    }
-}
+} 

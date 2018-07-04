@@ -42,10 +42,10 @@
         <div style="display: none" id="error" class="alert alert-danger">
            Maaf Login gagal
         </div>
-        <label for="inputEmail" class="sr-only">username</label>
-        <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username" required autofocus>
+        <label for="email" class="sr-only">email</label>
+        <input type="text" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+        <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me

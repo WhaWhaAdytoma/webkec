@@ -5,7 +5,7 @@ class Dashboard extends CI_Controller {
    
    public function __construct(){
        parent::__construct();
-       $this->load->model('m_dashboard','dash');
+       $this->load->model('m_aguru','dash');
        $login = $this->session->userdata('login');
        if ($login=='') {
           redirect(base_url()."index.php/login");
@@ -15,11 +15,8 @@ class Dashboard extends CI_Controller {
    public function index()
    {
      
-   	 $data['nama'] = "UIN Bandung";
-   	 $data['alamat'] ="Jl. AH. Nasution no 25";
-     $data['identitas'] ="Wha Wha Adytoma || 1157050174";
-     $data['matakuliah'] = $this->dash->tampil_data();
-   	 $this->load->view('dashboard',$data);
+     $data['teacher'] = $this->dash->tampil_data();
+   	 $this->load->view('aguru',$data);
    }
 
    public function input()

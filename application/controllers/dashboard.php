@@ -15,16 +15,9 @@ class Dashboard extends CI_Controller {
    public function index()
    {
      
-   	 $data['nama'] = "UIN Bandung";
-   	 $data['alamat'] ="Jl. AH. Nasution no 25";
-     $data['identitas'] ="Wha Wha Adytoma || 1157050174";
-     $data['matakuliah'] = $this->dash->tampil_data();
-   	 $this->load->view('dashboard',$data);
-   }
-
-   public function profil($no=NULL,$no2=NULL)
-   {
-   	  echo "Ini adalah halaman profil no.".$no." no2 . ".$no2;
+    
+     $data['admin'] = $this->dash->tampil_data();
+     $this->load->view('dashboard',$data);
    }
 
    public function input()
@@ -32,55 +25,67 @@ class Dashboard extends CI_Controller {
 
 // <!--  kode  nama_mk semester  sks nilai_minimal_lulus-->
 
-    $kode  = $this->input->post('kode'); 
-    $nama_mk = $this->input->post('nama_mk');
-    $semester = $this->input->post('semester');
-    $sks  = $this->input->post('sks'); 
-    $nilai_minimal_lulus = $this->input->post('nilai_minimal_lulus');
-    $data = array('kode' => $kode,
-                    'nama_mk' => $nama_mk,
-                    'semester' => $semester,
-                    'sks' => $sks,
-                    'nilai_minimal_lulus' => $nilai_minimal_lulus
+    /*$kode  = $this->input->post('kode'); */
+               /* id_admin */          
+    $email = $this->input->post(' email');
+    $nama = $this->input->post('nama');
+    $jk  = $this->input->post('jk'); 
+    $bday = $this->input->post('bday');
+    $kontak = $this->input->post('kontak');
+    $alamat  = $this->input->post('alamat'); 
+    $pass = $this->input->post('pass');
+    $foto = $this->input->post('foto');
+
+    $data = array('email' => $email,
+                    'nama' => $nama,
+                    'jk' => $jk,
+                    'bday' => $bday,
+                    'kontak' => $kontak,
+                    'alamat' => $alamat,
+                    'pass' => $pass,
+                    'foto' => $foto
                      );
     $this->dash->input($data);
     redirect(base_url());
    }
 
-   public function edit($kode=NULL)
+   public function edit($id_admin=NULL)
    {
-     $this->db->where('kode',$kode);
-     $data['matakuliah'] = $this->db->get('matakuliah')->result();
-     $this->load->view('edit',$data);
+     $this->db->where('id_admin',$id_admin);
+     $data['admin'] = $this->db->get('admin')->result();
+     $this->load->view('edit_admin',$data);
    }
 
    public function aksi_edit()
    {
+    $id_admin    = $this->input->post('id_admin'); 
+    $email = $this->input->post(' email');
+    $nama = $this->input->post('nama');
+    $jk  = $this->input->post('jk'); 
+    $bday = $this->input->post('bday');
+    $kontak = $this->input->post('kontak');
+    $alamat  = $this->input->post('alamat'); 
+    $pass = $this->input->post('pass');
+    $foto = $this->input->post('foto');
 
-// <!--  kode  nama_mk semester  sks nilai_minimal_lulus-->
-
-
-    $kode  = $this->input->post('kode'); 
-    $nama_mk = $this->input->post('nama_mk');
-    $semester = $this->input->post('semester');
-    $sks  = $this->input->post('sks'); 
-    $nilai_minimal_lulus = $this->input->post('nilai_minimal_lulus');
-    //$id    = $this->input->post('id'); 
-
-    $data = array('kode' => $kode,
-                    'nama_mk' => $nama_mk,
-                    'semester' => $semester,
-                    'sks' => $sks,
-                    'nilai_minimal_lulus' => $nilai_minimal_lulus
-                     );
-    $this->dash->update_data($data,$kode);
+    $data = array(  'id_admin' => $id_admin,
+                    'email' => $email,
+                    'nama' => $nama,
+                    'jk' => $jk,
+                    'bday' => $bday,
+                    'kontak' => $kontak,
+                    'alamat' => $alamat,
+                    'pass' => $pass,
+                    'foto' => $foto
+                     );   
+    $this->dash->update_data($data,$id_admin);
     redirect(base_url());
    }
 
-   public function hapus($id)
+   public function hapus($id_admin)
    {
-     $this->db->where('kode',$id);
-     $this->db->delete('matakuliah');
+     $this->db->where('id_admin',$id_admin);
+     $this->db->delete('admin');
      redirect(base_url());
    }
 }

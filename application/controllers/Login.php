@@ -11,14 +11,14 @@ class Login extends CI_Controller {
 
 	public function aksi_login()
 	{
-		$username = $this->input->post('username');
-		$password = md5($this->input->post('password'));
-		$this->db->where('nim',$username);
-		$this->db->where('password',$password);
-		$ada = $this->db->get('mahasiswa')->num_rows();
+		$email = $this->input->post('email');
+		$pass = $this->input->post('pass');
+		$this->db->where('email',$email);
+		$this->db->where('pass',$pass);
+		$ada = $this->db->get('admin')->num_rows();
 		if ($ada>0) {
 			$data_session = array('login' => '1',
-			                      'username' => $username );
+			                      'email' => $email );
 			$this->session->set_userdata($data_session);
 			echo "1";
 		}else{
@@ -28,7 +28,7 @@ class Login extends CI_Controller {
 	public function logout()
 	{
 		$this->session->unset_userdata('login');
-		$this->session->unset_userdata('username');
+		$this->session->unset_userdata('email');
         redirect(base_url()."index.php/login");
 	}
 }
